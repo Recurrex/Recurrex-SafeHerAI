@@ -9,7 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SafetyMapRouteImport } from './routes/safety-map'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -18,9 +23,34 @@ import { Route as CommunityRouteImport } from './routes/community'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SafetyMapRoute = SafetyMapRouteImport.update({
   id: '/safety-map',
   path: '/safety-map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FeaturesRoute = FeaturesRouteImport.update({
@@ -67,7 +97,12 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/emergency': typeof EmergencyRoute
   '/features': typeof FeaturesRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
   '/safety-map': typeof SafetyMapRoute
+  '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -77,7 +112,12 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/emergency': typeof EmergencyRoute
   '/features': typeof FeaturesRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
   '/safety-map': typeof SafetyMapRoute
+  '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -88,7 +128,12 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/emergency': typeof EmergencyRoute
   '/features': typeof FeaturesRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
   '/safety-map': typeof SafetyMapRoute
+  '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -100,7 +145,12 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/emergency'
     | '/features'
+    | '/forgot-password'
+    | '/login'
+    | '/profile'
     | '/safety-map'
+    | '/settings'
+    | '/signup'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -110,7 +160,12 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/emergency'
     | '/features'
+    | '/forgot-password'
+    | '/login'
+    | '/profile'
     | '/safety-map'
+    | '/settings'
+    | '/signup'
   id:
     | '__root__'
     | '/'
@@ -120,7 +175,12 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/emergency'
     | '/features'
+    | '/forgot-password'
+    | '/login'
+    | '/profile'
     | '/safety-map'
+    | '/settings'
+    | '/signup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -131,16 +191,56 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   EmergencyRoute: typeof EmergencyRoute
   FeaturesRoute: typeof FeaturesRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LoginRoute: typeof LoginRoute
+  ProfileRoute: typeof ProfileRoute
   SafetyMapRoute: typeof SafetyMapRoute
+  SettingsRoute: typeof SettingsRoute
+  SignupRoute: typeof SignupRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/safety-map': {
       id: '/safety-map'
       path: '/safety-map'
       fullPath: '/safety-map'
       preLoaderRoute: typeof SafetyMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/features': {
@@ -203,7 +303,12 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   EmergencyRoute: EmergencyRoute,
   FeaturesRoute: FeaturesRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  LoginRoute: LoginRoute,
+  ProfileRoute: ProfileRoute,
   SafetyMapRoute: SafetyMapRoute,
+  SettingsRoute: SettingsRoute,
+  SignupRoute: SignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
